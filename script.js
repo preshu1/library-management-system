@@ -10,6 +10,27 @@ const library = {
     };
     this.books.push(book);
   },
+
+  getTotalBooks() {
+    return this.books.length;
+  },
+
+  getReadBooks() {
+    let count = 0;
+    for (const book of this.books) {
+      if (book.hasRead) {
+        count++;
+      }
+    }
+    return count;
+  },
+
+  getUnreadBooks() {
+    return this.getTotalBooks() - this.getReadBooks();
+  },
 };
 library.addBook("twilight", "Stephenie Meyer", 498, true);
 console.log(library.books);
+console.log("Total Number of Books:", library.getTotalBooks());
+console.log("Number of Read Books:", library.getReadBooks());
+console.log("Number of Unread Books:", library.getUnreadBooks());
